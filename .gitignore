@@ -1,0 +1,5 @@
+# mac system files
+.DS_Store
+
+# binary folder
+/bin
