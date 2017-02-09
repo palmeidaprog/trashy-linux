@@ -6,19 +6,24 @@
 * http://github.com/palmeidaprog
 */
 
+#include "options.h"
+
+Options::quiet = false;
+Options::verbose = false;
+
 // set and getters
-static const bool &Options::is_quiet() const {
-	ret55urn &quiet;
+const bool &Options::is_quiet() {
+	return quiet;
 }
 
-static void Options::set_quiet(const bool &q) {
+void Options::set_quiet(const bool &q) {
 	quiet = q;
 }
 
-static const int &Options::is_verbose() const {
-	return &verbose;
+const int &Options::is_verbose() {
+	return verbose;
 }
 
-static void &Options::set_verbose(const int &verb) {
+void &Options::set_verbose(const bool &verb) {
 	verbose = verb;
 }

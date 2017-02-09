@@ -9,7 +9,8 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "options.h"
+//#include "options.h"
+#include "options.cpp"
 
 int main(int argc, char *argv[]) {
 	//std::vector<string> args(argv);
@@ -17,5 +18,6 @@ int main(int argc, char *argv[]) {
 	Options::set_quiet(true);
 	Options::set_verbose(true);
 	std::cout << "Quiet: " << Options::is_quiet() << " " << Options::is_verbose;
+	
 	return 0;
 }
