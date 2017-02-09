@@ -8,9 +8,6 @@
 
 #include "options.h"
 
-Options::quiet = false;
-Options::verbose = false;
-
 // set and getters
 const bool &Options::is_quiet() {
 	return quiet;
@@ -24,6 +21,6 @@ const int &Options::is_verbose() {
 	return verbose;
 }
 
-void &Options::set_verbose(const bool &verb) {
+void Options::set_verbose(const bool &verb) {
 	verbose = verb;
 }

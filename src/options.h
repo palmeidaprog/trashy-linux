@@ -11,14 +11,14 @@
 
 class Options {
 
-	static bool quiet, verbose;
-	Options() {	} // private so defeats instanciaton
+	bool quiet, verbose;
 
 public:
-	static const bool &is_quiet();
-	static void set_quiet(const bool &q);
-	static const int &is_verbose();
-	static void set_verbose(const bool &verb);
+	Options(): quiet(true), verbose(true) {	} 
+	const bool &is_quiet();
+	void set_quiet(const bool &q);
+	const int &is_verbose();
+	void set_verbose(const bool &verb);
 };
 
 #endif
