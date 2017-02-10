@@ -17,7 +17,7 @@ public:
 	Options(): quiet(true), verbose(true) {	} 
 	const bool &is_quiet();
 	void set_quiet(const bool &q);
-	const int &is_verbose();
+	const bool &is_verbose();
 	void set_verbose(const bool &verb);
 };
 

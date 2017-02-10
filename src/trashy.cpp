@@ -8,7 +8,7 @@
 
 #include <iostream>
 //#include "options.h"
-#include "options.cpp"
+#include "options.h"
 
 int main(int argc, char *argv[]) {
 	//std::vector<string> args(argv);
