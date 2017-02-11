@@ -6,6 +6,6 @@
 * http://github.com/palmeidaprog
 */
 
-enum class Error { 
-	NO_ARGS
+enum class Output_msg { 
+	NO_ARGS, HELP, INVALID_OPTION
 };

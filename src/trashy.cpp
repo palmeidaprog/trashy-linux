@@ -6,18 +6,29 @@
 * http://github.com/palmeidaprog
 */
 
+/*
+* main() return errors
+* 1 = no arguments
+*/
+
+#define VERSION "v0.1 alpha"
+#define AUTHOR "Paulo R. Almeida Filho"
+#define MAIL "<palmeidaprogramming@gmail.com>"
+#define SITE "http://www.github.com/palmeidaprog/"
+
 #include <iostream>
 #include <vector>
 #include <string>
 #include "options.h"
-#include "error.h"
+#include "output_msg.h"
 
 using std::string;
 using std::vector;
 using std::cout;
+using std::cerr;
 using std::endl;
 
-void error_msg(const Error e); // prints error msgs
+void output_msg(const Output_msg o); // prints error msgs
 
 int main(int argc, char *argv[]) {
 	
@@ -27,25 +38,40 @@ int main(int argc, char *argv[]) {
 		args.push_back(argv[i]);
 	}
 
-	if(argc == 1) {
-		error_msg(Error::NO_ARGS);
+	// no arguments/commands/options
+	if(argc <= 1) {
+		output_msg(Output_msg::NO_ARGS);
 	}
+	// show help menu
+	else if(string(argv[1]) == "-h" || string(argv[1] == "--help")) {
+		output_msg(Output_msg::HELP);
+	}
+	else{ 
+
+	}
+
 	Options op;
-
-
 	
 	return 0;
 }
 
-// prints error msgs
-void error_msg(const Error e) {
-	switch(e) {
-		case Error::NO_ARGS:
-			cout << "trashy needs commands or arguments." << endl;
-			cout << "Usage: " << "trashy -[options] [command] " <<
-			"arguments" << endl; 
-			cout << "Try 'trashy --help' or 'trashy -h' for more " <<
+//--Functions and procedures-----------------------------------------------------
+
+// prints output and error msgs
+void output_msg(const Output_msg o) {
+	switch(o) {
+		case Output_msg::NO_ARGS:
+			cerr << "trashy: needs commands or arguments." << endl;
+			cerr << "Usage: " << "trashy -[OPTION] ... [COMMAND] " <<
+			"... arguments\n" << endl; 
+			cerr << "Try 'trashy --help' or 'trashy -h' for more " <<
 			"information" << endl;
+			break;
+		case Output_msg::HELP:
+			cout << "Trashy " << VERSION <<", a trash (delete) manager" 
+				<< "for terminal." << endl;
+			cout << AUTHOR << " " << MAIL << endl;
+			cout << SITE << endl << endl;
 			break;
 	}
 }
