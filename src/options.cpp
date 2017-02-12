@@ -6,8 +6,8 @@
 * http://github.com/palmeidaprog
 */
 
+// class header
 #include "options.h"
-
 
 // set and getters
 const bool &Options::is_quiet() {
@@ -24,4 +24,9 @@ const bool &Options::is_verbose() {
 
 void Options::set_verbose(const bool &verb) {
 	verbose = verb;
+}
+
+// read the args for options
+const Output_msg parse_options(const vector<string> &args) {
+	return Output_msg::NO_ARGS;
 }

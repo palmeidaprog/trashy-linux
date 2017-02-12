@@ -31,11 +31,12 @@ using std::endl;
 void output_msg(const Output_msg o); // prints error msgs
 
 int main(int argc, char *argv[]) {
+	Options op;
 	
 	// convert C String to std::string
 	vector<string> args;
 	for(int i = 1; i < argc; ++i) {
-		args.push_back(argv[i]);
+		args.push_back(string(argv[i]));
 	}
 
 	// no arguments/commands/options
@@ -43,15 +44,13 @@ int main(int argc, char *argv[]) {
 		output_msg(Output_msg::NO_ARGS);
 	}
 	// show help menu
-	else if(string(argv[1]) == "-h" || string(argv[1] == "--help")) {
+	else if(string(argv[1]) == "-h" || string(argv[1]) == "--help") {
 		output_msg(Output_msg::HELP);
 	}
 	else{ 
-
+		op.parse_options(args);
 	}
 
-	Options op;
-	
 	return 0;
 }
 
@@ -59,7 +58,7 @@ int main(int argc, char *argv[]) {
 
 // prints output and error msgs
 void output_msg(const Output_msg o) {
-	switch(o) {
+	switch(o) { // todo: To add cases for other Output_msg values
 		case Output_msg::NO_ARGS:
 			cerr << "trashy: needs commands or arguments." << endl;
 			cerr << "Usage: " << "trashy -[OPTION] ... [COMMAND] " <<
@@ -69,9 +68,11 @@ void output_msg(const Output_msg o) {
 			break;
 		case Output_msg::HELP:
 			cout << "Trashy " << VERSION <<", a trash (delete) manager" 
-				<< "for terminal." << endl;
+				<< " for terminal." << endl;
 			cout << AUTHOR << " " << MAIL << endl;
 			cout << SITE << endl << endl;
+			break;
+		default:
 			break;
 	}
 }
