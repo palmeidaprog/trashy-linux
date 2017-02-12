@@ -27,6 +27,6 @@ void Options::set_verbose(const bool &verb) {
 }
 
 // read the args for options
-const Output_msg parse_options(const vector<string> &args) {
+const Output_msg Options::parse_options(const vector<string> &args) {
 	return Output_msg::NO_ARGS;
 }

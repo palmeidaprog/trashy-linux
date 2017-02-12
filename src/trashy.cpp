@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
 		output_msg(Output_msg::HELP);
 	}
 	else{ 
-		op.parse_options(args);
+		output_msg(op.parse_options(args));
 	}
 
 	return 0;

@@ -29,7 +29,7 @@ public:
 	const bool &is_verbose();
 	void set_verbose(const bool &verb);
 
-	// read the args for options
+	// read and parse the args for options
 	const Output_msg parse_options(const vector<string> &args);
 };
 
