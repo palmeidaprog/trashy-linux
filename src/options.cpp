@@ -6,7 +6,6 @@
 * http://github.com/palmeidaprog
 */
 
-<<<<<<< HEAD
 #include <vector>
 #include <string>
 #include "output_msg.h"
@@ -17,15 +16,6 @@ using std::string;
 using trashy::output::OutputMsg;
 
 namespace trashy { namespace output {
-=======
-// class header
-#include "options.h"
-
-// set and getters
-const bool &Options::is_quiet() {
-	return quiet;
-}
->>>>>>> origin/sync
 
 	const bool &Options::is_quiet() {
 		return quiet;
@@ -35,7 +25,6 @@ const bool &Options::is_quiet() {
 		quiet = q;
 	}
 
-<<<<<<< HEAD
 	const bool &Options::is_verbose() {
 		return verbose;
 	}
@@ -44,7 +33,7 @@ const bool &Options::is_quiet() {
 		verbose = verb;
 	}
 
-	// parse arguments
+	// parse arguments todo: finish
 	const OutputMsg &parse_args(const vector<string> &args) {
 		for(string s : args) {
 			// "--" disable options
@@ -56,16 +45,7 @@ const bool &Options::is_quiet() {
 			}
 		}
 
-		return OutputMsg::INVALID_OPTIONS;
+		return OutputMsg::INVALID_OPTION;
 	}
 }}
-=======
-void Options::set_verbose(const bool &verb) {
-	verbose = verb;
-}
 
-// read the args for options
-const Output_msg Options::parse_options(const vector<string> &args) {
-	return Output_msg::NO_ARGS;
-}
->>>>>>> origin/sync
