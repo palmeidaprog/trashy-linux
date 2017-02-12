@@ -9,21 +9,26 @@
 #ifndef OPTIONS_H
 #define OPTIONS_H
 
-namespace trashy {
-	namespace output {
-		class Options {
+using std::vector;
+using std::string;
+using trashy::output::OutputMsg;
 
-			bool quiet, verbose;
+namespace trashy { namespace output {
+	class Options {
+		bool quiet, verbose;
+		vector<string> 
 
-		public:
-			Options(): quiet(true), verbose(true) {	} 
+	public:
+		Options(): quiet(false), verbose(false) {	} 
 
-			const bool &is_quiet();
-			void set_quiet(const bool &q);
-			const bool &is_verbose();
-			void set_verbose(const bool &verb);
-		};
-	}
-}
+		const bool &is_quiet();
+		void set_quiet(const bool &q);
+		const bool &is_verbose();
+		void set_verbose(const bool &verb);
+
+		// parse arguments
+		const OutputMsg &parse_args(const vector<string> &args);
+	};
+}}
 
 #endif // OPTIONS_H

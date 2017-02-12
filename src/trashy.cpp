@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
 		output_msg(OutputMsg::HELP);
 	}
 	else{ 
-
+		
 	}
 
 	Options op;

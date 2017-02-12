@@ -16,4 +16,4 @@ namespace trashy { namespace output {
 	void output_msg(const OutputMsg o); // prints program output
 }}
 
-#endif
+#endif // OUTPUT_H

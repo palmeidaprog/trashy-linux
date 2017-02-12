@@ -12,6 +12,7 @@
 namespace trashy { namespace output {
 
 	// to be used with trashy::output::output_msg()
+	// and options class
 	enum class OutputMsg { 
 		NO_ARGS, HELP, INVALID_OPTION
 	};
