@@ -9,6 +9,7 @@
 #ifndef OUTPUT_MSG_H
 #define OUTPUT_MSG_H
 
+<<<<<<< HEAD
 namespace trashy { namespace output {
 
 	// to be used with trashy::output::output_msg()
@@ -20,3 +21,10 @@ namespace trashy { namespace output {
 }}
 
 #endif // OUTPUT_MSG_H
+=======
+enum class Output_msg { 
+	NO_ARGS, HELP, INVALID_OPTION
+};
+
+#endif
+>>>>>>> origin/sync
