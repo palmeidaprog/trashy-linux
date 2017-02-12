@@ -9,16 +9,21 @@
 #ifndef OPTIONS_H
 #define OPTIONS_H
 
-class Options {
+namespace trashy {
+	namespace output {
+		class Options {
 
-	bool quiet, verbose;
+			bool quiet, verbose;
 
-public:
-	Options(): quiet(true), verbose(true) {	} 
-	const bool &is_quiet();
-	void set_quiet(const bool &q);
-	const bool &is_verbose();
-	void set_verbose(const bool &verb);
-};
+		public:
+			Options(): quiet(true), verbose(true) {	} 
 
-#endif
+			const bool &is_quiet();
+			void set_quiet(const bool &q);
+			const bool &is_verbose();
+			void set_verbose(const bool &verb);
+		};
+	}
+}
+
+#endif // OPTIONS_H

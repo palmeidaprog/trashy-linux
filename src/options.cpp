@@ -8,20 +8,21 @@
 
 #include "options.h"
 
+namespace trashy { namespace output {
 
-// set and getters
-const bool &Options::is_quiet() {
-	return quiet;
-}
+	const bool &Options::is_quiet() {
+		return quiet;
+	}
 
-void Options::set_quiet(const bool &q) {
-	quiet = q;
-}
+	void Options::set_quiet(const bool &q) {
+		quiet = q;
+	}
 
-const bool &Options::is_verbose() {
-	return verbose;
-}
+	const bool &Options::is_verbose() {
+		return verbose;
+	}
 
-void Options::set_verbose(const bool &verb) {
-	verbose = verb;
-}
+	void Options::set_verbose(const bool &verb) {
+		verbose = verb;
+	}
+}}

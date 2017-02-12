@@ -11,24 +11,17 @@
 * 1 = no arguments
 */
 
-#define VERSION "v0.1 alpha"
-#define AUTHOR "Paulo R. Almeida Filho"
-#define MAIL "<palmeidaprogramming@gmail.com>"
-#define SITE "http://www.github.com/palmeidaprog/"
-
-#include <iostream>
 #include <vector>
 #include <string>
 #include "options.h"
 #include "output_msg.h"
+#include "output.h"
 
 using std::string;
 using std::vector;
-using std::cout;
-using std::cerr;
-using std::endl;
-
-void output_msg(const Output_msg o); // prints error msgs
+using trashy::output::Options;
+using trashy::output::OutputMsg;
+using trashy::output::output_msg; // function
 
 int main(int argc, char *argv[]) {
 	
@@ -40,11 +33,11 @@ int main(int argc, char *argv[]) {
 
 	// no arguments/commands/options
 	if(argc <= 1) {
-		output_msg(Output_msg::NO_ARGS);
+		output_msg(OutputMsg::NO_ARGS);
 	}
 	// show help menu
-	else if(string(argv[1]) == "-h" || string(argv[1] == "--help")) {
-		output_msg(Output_msg::HELP);
+	else if(string(argv[1]) == "-h" || string(argv[1]) == "--help") {
+		output_msg(OutputMsg::HELP);
 	}
 	else{ 
 
@@ -53,25 +46,4 @@ int main(int argc, char *argv[]) {
 	Options op;
 	
 	return 0;
-}
-
-//--Functions and procedures-----------------------------------------------------
-
-// prints output and error msgs
-void output_msg(const Output_msg o) {
-	switch(o) {
-		case Output_msg::NO_ARGS:
-			cerr << "trashy: needs commands or arguments." << endl;
-			cerr << "Usage: " << "trashy -[OPTION] ... [COMMAND] " <<
-			"... arguments\n" << endl; 
-			cerr << "Try 'trashy --help' or 'trashy -h' for more " <<
-			"information" << endl;
-			break;
-		case Output_msg::HELP:
-			cout << "Trashy " << VERSION <<", a trash (delete) manager" 
-				<< "for terminal." << endl;
-			cout << AUTHOR << " " << MAIL << endl;
-			cout << SITE << endl << endl;
-			break;
-	}
 }
