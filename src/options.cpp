@@ -36,16 +36,35 @@ namespace trashy { namespace output {
 	// parse arguments todo: finish
 	const OutputMsg &parse_args(const vector<string> &args) {
 		for(string s : args) {
-			// "--" disable options
-			if(s == "--") { 
-				break; 
+			bool search_for_options = true;
+
+			// search for options until finds a -- 
+			if(search_for_options) {
+				// "--" disable options
+				if(s == "--") { 
+					search_for_options = false;
+				}
+				else if(s[0] == "-") { // option
+					if(s[1] != "-") {
+						read_options(s);
+					}
+					else {
+						read_verbose_options(s);
+					}
+								
+				}
+				else { // files to delete
+					files_to_trash.emplace_back(s);
+				}
 			}
-			else if(s[0] == "-" && s[0]) {
-				for()
+			else { // files to delete
+				files_to_trash.emplace_back(s);
 			}
 		}
-
-		return OutputMsg::INVALID_OPTION;
 	}
+
+	
+
+
 }}
 
