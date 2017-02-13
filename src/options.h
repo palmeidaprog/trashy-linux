@@ -30,8 +30,8 @@ namespace trashy { namespace output {
 		// parse arguments
 		const OutputMsg &parse_args(const vector<string> &args);
 		
-		void read_verbose_options(const string &str); 
-		void read_options(const string &str);
+		const bool &read_verbose_options(const string &str); 
+		const bool &read_options(const string &str);
 	};
 }}
 

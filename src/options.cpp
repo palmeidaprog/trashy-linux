@@ -34,7 +34,7 @@ namespace trashy { namespace output {
 	}
 
 	// parse arguments todo: finish
-	const OutputMsg &parse_args(const vector<string> &args) {
+	const OutputMsg &Options::parse_args(const vector<string> &args) {
 		for(string s : args) {
 			bool search_for_options = true;
 
@@ -44,16 +44,22 @@ namespace trashy { namespace output {
 				if(s == "--") { 
 					search_for_options = false;
 				}
-				else if(s[0] == "-") { // option
+				// read options
+				else if(s[0] == "-") { 
+					// single - options
 					if(s[1] != "-") {
-						read_options(s);
+						if(!read_options(s)) {
+							return OutputMsg::INVALID_OPTION;
+						}
 					}
+					// double -- (verbose) options
 					else {
-						read_verbose_options(s);
-					}
-								
+						if(!read_verbose_options(s)) {
+							return OutputMsg::INVALID_OPTION;
+						}
+					}			
 				}
-				else { // files to delete
+				else { // files to delete 
 					files_to_trash.emplace_back(s);
 				}
 			}
@@ -63,6 +69,17 @@ namespace trashy { namespace output {
 		}
 	}
 
+	const bool &Options::read_verbose_options(const string &str) {
+
+	}
+
+	const bool &Options::read_options(const string &str) {
+		for(char c : str) {
+			if(c != '-') {
+				
+			}	
+		}
+	}
 	
 
 
