@@ -22,6 +22,9 @@ namespace trashy { namespace output {
 	}
 
 	void Options::set_quiet(const bool &q) {
+		if(q) {
+			verbose = false;
+		}
 		quiet = q;
 	}
 
@@ -30,11 +33,14 @@ namespace trashy { namespace output {
 	}
 
 	void Options::set_verbose(const bool &verb) {
+		if(verb) {
+			quiet = false;
+		}
 		verbose = verb;
 	}
 
 	// parse arguments todo: finish
-	const OutputMsg &Options::parse_args(const vector<string> &args) {
+	const OutputMsg Options::parse_args(const vector<string> &args) {
 		for(string s : args) {
 			bool search_for_options = true;
 
@@ -45,18 +51,14 @@ namespace trashy { namespace output {
 					search_for_options = false;
 				}
 				// read options
-				else if(s[0] == "-") { 
+				else if(s[0] == '-') { 
 					// single - options
-					if(s[1] != "-") {
-						if(!read_options(s)) {
-							return OutputMsg::INVALID_OPTION;
-						}
+					if(s[1] != '-') {
+						return read_options(s);
 					}
 					// double -- (verbose) options
 					else {
-						if(!read_verbose_options(s)) {
-							return OutputMsg::INVALID_OPTION;
-						}
+						return read_verbose_options(s);
 					}			
 				}
 				else { // files to delete 
@@ -69,19 +71,31 @@ namespace trashy { namespace output {
 		}
 	}
 
-	const bool &Options::read_verbose_options(const string &str) {
-
+	const OutputMsg Options::read_verbose_options(const string &str) {
+		return OutputMsg::INVALID_OPTION;
 	}
 
-	const bool &Options::read_options(const string &str) {
+	const OutputMsg Options::read_options(const string &str) {
 		for(char c : str) {
 			if(c != '-') {
-				
-			}	
+				switch(c) {
+					case 'v':
+						set_verbose(true);
+						break;
+					case 'q':
+						set_quiet(true);
+						break;
+					case 'V':
+						return OutputMsg::ABOUT;
+					case 'h':
+
+					default:
+						return OutputMsg::INVALID_OPTION;
+						break;
+				}
+			}
 		}
+		return OutputMsg::SUCCESS;
 	}
-	
-
-
 }}
 

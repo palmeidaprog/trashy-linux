@@ -15,7 +15,7 @@ using trashy::output::OutputMsg;
 
 namespace trashy { namespace output {
 	class Options {
-		bool quiet, verbose;
+		bool quiet, verbose, ver;
 		vector<string> files_to_trash;
 
 		public:
@@ -28,10 +28,10 @@ namespace trashy { namespace output {
 		void set_verbose(const bool &verb);
 
 		// parse arguments
-		const OutputMsg &parse_args(const vector<string> &args);
+		const OutputMsg parse_args(const vector<string> &args);
 		
-		const bool &read_verbose_options(const string &str); 
-		const bool &read_options(const string &str);
+		const OutputMsg read_verbose_options(const string &str); 
+		const OutputMsg read_options(const string &str);
 	};
 }}
 

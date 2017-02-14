@@ -38,7 +38,17 @@ namespace trashy { namespace output {
 				cout << AUTHOR << " " << MAIL << endl;
 				cout << SITE << endl << endl;
 				break;
+			case OutputMsg::ABOUT:
+				cout << "About" << endl;
+				break;
+			case OutputMsg::SUCCESS:
+				cout << "Success!" << endl;
+				break;
+			case OutputMsg::INVALID_OPTION:
+				cout << "INVALID_OPTION" << endl;
+				break;
 			default:
+				cout << "default" << endl;
 				break;
 		}
 	}
