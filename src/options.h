@@ -15,7 +15,7 @@ using trashy::output::OutputMsg;
 
 namespace trashy { namespace output {
 	class Options {
-		bool quiet, verbose, ver;
+		bool quiet, verbose;
 		vector<string> files_to_trash;
 
 		public:
