@@ -43,6 +43,7 @@ namespace trashy { namespace output {
 	const OutputMsg Options::parse_args(const vector<string> &args) {
 		for(string s : args) {
 			bool search_for_options = true;
+			OutputMsg
 
 			// search for options until finds a -- 
 			if(search_for_options) {
@@ -54,10 +55,14 @@ namespace trashy { namespace output {
 				else if(s[0] == '-') { 
 					// single - options
 					if(s[1] != '-') {
-						return read_options(s);
+						OutputMsg out = read_options(s);
+						if(out != OutputMsg::SUCCESS) {
+							return out;
+						}
 					}
 					// double -- (verbose) options
 					else {
+						
 						return read_verbose_options(s);
 					}			
 				}
@@ -87,8 +92,9 @@ namespace trashy { namespace output {
 						break;
 					case 'V':
 						return OutputMsg::ABOUT;
+						breakl
 					case 'h':
-
+						return OutputMsg::HELP;
 					default:
 						return OutputMsg::INVALID_OPTION;
 						break;
