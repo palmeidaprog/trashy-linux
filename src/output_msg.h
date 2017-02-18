@@ -16,7 +16,6 @@ namespace trashy { namespace output {
 	enum class OutputMsg { 
 		NO_ARGS, HELP, ABOUT, INVALID_OPTION, SUCCESS
 	};
-
 }}
 
 #endif // OUTPUT_MSG_H

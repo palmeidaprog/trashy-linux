@@ -9,6 +9,8 @@
 #ifndef OPTIONS_H
 #define OPTIONS_H
 
+#include "output_msg.h"
+
 using std::vector;
 using std::string;
 using trashy::output::OutputMsg;

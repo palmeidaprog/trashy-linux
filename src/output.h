@@ -13,6 +13,10 @@ using trashy::output::OutputMsg;
 
 namespace trashy { namespace output {
 
+	void help();
+	void no_args();
+	void about();
+	void invalid_args();
 	void output_msg(const OutputMsg o); // prints program output
 }}
 
