@@ -25,10 +25,28 @@ namespace trashy { namespace output {
 
 	// help menu
 	void help() {
-		cout << "Trashy " << VERSION <<", a trash (delete) manager" 
-					<< "for terminal." << endl;
-		cout << AUTHOR << " " << MAIL << endl;
-		cout << SITE << endl << endl;
+		about();
+
+		cout << "Usage: " << "trashy -[OPTION] ... [COMMAND] " <<
+				"... arguments\n" << endl; 
+
+		// help options
+		cout << "Help options:" << endl;
+		cout << "  -h,  --help                  show this help menu"
+				 << endl;
+		cout << "  -V,  --version               show Trashy version"
+				 << endl << endl;
+
+		// options
+		cout << "Options:" << endl;
+		cout << "  -q,  --quiet                 quiet (no output)" 
+				<< endl;
+		cout << "  -v,  --verbose               be verbose (override -q)" 
+				<< endl;
+		cout << "  -i,  --confirmation          prompt confirmation before " 
+				<< "each removal" << endl;
+		cout << "  -l,  --list-devices          lists all devices that "
+				<< "contains a Trash folder" << endl << endl;
 	}
 
 	void no_args() {
@@ -40,13 +58,13 @@ namespace trashy { namespace output {
 	}
 
 	void about() {
-		cout << "Trashy " << VERSION <<", a trash (delete) manager" 
+		cout << "Trashy " << VERSION <<", a trash (delete) manager " 
 					<< "for terminal." << endl;
 		cout << AUTHOR << " " << MAIL << endl;
 		cout << SITE << endl << endl;
 	}
 
-	void invalid_args(w) {
+	void invalid_args() {
 		cerr << "INVALID_OPTION" << endl;
 	}
 
