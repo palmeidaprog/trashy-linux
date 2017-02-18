@@ -46,7 +46,7 @@ namespace trashy { namespace output {
 		cout << SITE << endl << endl;
 	}
 
-	void invalid_args() {
+	void invalid_args(w) {
 		cerr << "INVALID_OPTION" << endl;
 	}
 
