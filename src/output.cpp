@@ -47,6 +47,11 @@ namespace trashy { namespace output {
 				<< "each removal" << endl;
 		cout << "  -l,  --list-devices          lists all devices that "
 				<< "contains a Trash folder" << endl << endl;
+		cout << "  -g,  --garbage               displays garbage content "
+				<< "(Trash Folder's Contents" << endl;
+		cout << "  -r,  --recursive             be recursive (this is standard "
+				<< "if the target is a folder)" << endl;
+
 	}
 
 	void no_args() {
