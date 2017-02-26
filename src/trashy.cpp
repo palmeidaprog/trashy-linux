@@ -16,15 +16,18 @@
 #include "options.h"
 #include "output_msg.h"
 #include "output.h"
+#include "devices.h"
 
 using std::string;
 using std::vector;
 using trashy::output::Options;
 using trashy::output::OutputMsg;
 using trashy::output::output_msg; // function
+using trashy::config::Devices;
 
 int main(int argc, char *argv[]) {
 	Options op;
+	Devices devices;
 	
 	// convert C String to std::string
 	vector<string> args;
