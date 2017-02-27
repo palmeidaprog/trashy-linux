@@ -10,18 +10,22 @@
 #define OPTIONS_H
 
 #include "output_msg.h"
+#include "devices.h"
 
 using std::vector;
 using std::string;
 using trashy::output::OutputMsg;
+using trashy::config::Devices;
 
 namespace trashy { namespace output {
 	class Options {
 		bool quiet, verbose;
 		vector<string> files_to_trash;
+		const string PWD_FILE = "/.trashy/pwd_file";
+		Devices devices;
 
 		public:
-			Options(): quiet(false), verbose(false) {	} 
+			Options(Devices &dev): quiet(false), verbose(false), devices(dev) {	} 
 
 		// setters and getters
 		const bool &is_quiet();
@@ -31,9 +35,10 @@ namespace trashy { namespace output {
 
 		// parse arguments
 		const OutputMsg parse_args(const vector<string> &args);
-		
 		const OutputMsg read_verbose_options(const string &str); 
 		const OutputMsg read_options(const string &str);
+		void move_to_trash(const string &to_delete);
+		const string get_trash_bin(const string &path_to_parse);
 	};
 }}
 

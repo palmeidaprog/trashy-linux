@@ -75,6 +75,10 @@ namespace trashy { namespace output {
 				files_to_trash.emplace_back(s);
 			}
 		}
+		for(string str : files_to_trash) {
+			move_to_trash(str);	
+		}
+		
 
 		return OutputMsg::SUCCESS;
 	}
@@ -106,6 +110,20 @@ namespace trashy { namespace output {
 			}
 		}
 		return OutputMsg::SUCCESS;
+	}
+
+	void Options::move_to_trash(const string &to_delete) {
+		string cmd = "mv ";
+		if(is_verbose()) {
+			cmd += "-v " + to_delete + " ";
+		}
+		cmd += get_trash_bin(to_delete);
+		system(cmd.c_str());
+	}
+
+	const string Options::get_trash_bin(const string &path_to_parse) {
+		system(("pwd -P | cat >" + devices.get_home_dir() + PWD_FILE).c_str());
+		return "~/.Trash";
 	}
 }}
 

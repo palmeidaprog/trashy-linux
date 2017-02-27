@@ -32,7 +32,7 @@ namespace trashy { namespace config {
 		string os_name(get_os_name());
 
 		if(os_name == "Mac OSX") {
-			system("mount | grep -i /dev/s | grep -v tmpfs | cat >~/.trashy/devlist"); 
+			system("mount | grep -i /dev/di | cat >~/.trashy/devlist"); 
 			system("mount | grep -i // | cat >~/.trashy/remlist");
 			system("mount | grep -i :/ | cat >~/.trashy/remlist2");
 			cout << "mac\n"; // test
@@ -85,14 +85,20 @@ namespace trashy { namespace config {
 			string line, device_path = "";
 
 			while(getline(fileInput, line)) {
-				for(unsigned i = line.find("on /") + 3; i < line.find(" type"); ++i) {
-					device_path += line.at(i);
+				if(os == "Mac OSX") {
+					for(unsigned i = line.find("on /") + 3; i < line.find(" (osxfuse"); ++i) {
+						device_path += line.at(i);
+					}
+				}
+				else {
+					for(unsigned i = line.find("on /") + 3; i < line.find(" type"); ++i) {
+						device_path += line.at(i);
+					}	
 				}
 				dev_roots.emplace_back(device_path);
 				device_path = "";
-			}
+			} // todo: create DeviceRoot class
 		}
-		
 		fileInput.close();
 	}
 

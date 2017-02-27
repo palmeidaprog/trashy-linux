@@ -26,8 +26,8 @@ using trashy::output::output_msg; // function
 using trashy::config::Devices;
 
 int main(int argc, char *argv[]) {
-	Options op;
 	Devices devices;
+	Options op(devices);
 	
 	// convert C String to std::string
 	vector<string> args;

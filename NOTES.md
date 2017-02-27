@@ -5,3 +5,7 @@
 * -V --Version	Version Mode ()
 * -i --confirm			Prompts Confirmation to each file sent to trash
 * -l --list-containers 
+
+
+### To add:
+* Report files thaat couldnt be moved to trash

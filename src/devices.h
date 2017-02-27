@@ -31,10 +31,11 @@ namespace trashy { namespace config {
 			update_devices();
 		}
 
-	private:
-		void update_devices();
 		string get_home_dir();
 		string get_os_name();
+
+	private:
+		void update_devices();
 		void find_device(const string &file);
 		void create_trash();
 	};	
