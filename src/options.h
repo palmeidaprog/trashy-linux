@@ -25,7 +25,8 @@ namespace trashy { namespace output {
 		Devices devices;
 
 		public:
-			Options(Devices &dev): quiet(false), verbose(false), devices(dev) {	} 
+			Options(Devices &dev): quiet(false), verbose(false),
+					devices(dev) {	} 
 
 		// setters and getters
 		const bool &is_quiet();

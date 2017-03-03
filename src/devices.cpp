@@ -38,7 +38,9 @@ namespace trashy { namespace config {
 			cout << "mac\n"; // test
 		}
 		else {
-			system("mount -l | grep -i /dev/s | grep -v tmpfs | cat >~/.trashy/devlist"); 
+			string cmd("mount -l | grep -i /dev/s | grep -v tmpfs | cat ");
+			cmd += ">~/.trashy/devlist";
+			system(cmd.c_str()); 
 			system("mount -l | grep -i // | cat >~/.trashy/remlist");
 			system("mount -l | grep -i :/ | cat >~/.trashy/remlist2");
 		}
@@ -86,12 +88,14 @@ namespace trashy { namespace config {
 
 			while(getline(fileInput, line)) {
 				if(os == "Mac OSX") {
-					for(unsigned i = line.find("on /") + 3; i < line.find(" (osxfuse"); ++i) {
+					for(unsigned i = line.find("on /") + 3; i < line.find
+						(" (osxfuse"); ++i) {
 						device_path += line.at(i);
 					}
 				}
 				else {
-					for(unsigned i = line.find("on /") + 3; i < line.find(" type"); ++i) {
+					for(unsigned i = line.find("on /") + 3; i < line.find
+						(" type"); ++i) {
 						device_path += line.at(i);
 					}	
 				}
