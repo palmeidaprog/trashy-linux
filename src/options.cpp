@@ -8,6 +8,7 @@
 
 #include <vector>
 #include <string>
+#include <cstdlib>
 #include "output_msg.h"
 #include "options.h"
 

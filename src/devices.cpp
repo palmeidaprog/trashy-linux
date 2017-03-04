@@ -9,7 +9,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
-#include <iostream> //test
+#include <iostream> 
 #include <unistd.h>
 #include <sys/types.h>
 #include <pwd.h>
@@ -19,7 +19,8 @@ using std::vector;
 using std::string;
 using std::ifstream;
 using std::getline;
-using std::cout;
+using std::endl;
+using std::exception;
 
 namespace trashy { namespace config {
 
@@ -35,7 +36,6 @@ namespace trashy { namespace config {
 			system("mount | grep -i /dev/di | cat >~/.trashy/devlist"); 
 			system("mount | grep -i // | cat >~/.trashy/remlist");
 			system("mount | grep -i :/ | cat >~/.trashy/remlist2");
-			cout << "mac\n"; // test
 		}
 		else {
 			string cmd("mount -l | grep -i /dev/s | grep -v tmpfs | cat ");
@@ -83,25 +83,33 @@ namespace trashy { namespace config {
 	void Devices::find_device(const string &file) {
 		ifstream fileInput(file);
 
-		if(fileInput) {
-			string line, device_path = "";
+		try {
+			if(fileInput) {
+				string line, device_path = "";
 
-			while(getline(fileInput, line)) {
-				if(os == "Mac OSX") {
-					for(unsigned i = line.find("on /") + 3; i < line.find
-						(" (osxfuse"); ++i) {
-						device_path += line.at(i);
+				while(getline(fileInput, line)) {
+					if(os == "Mac OSX") {
+						for(unsigned i = line.find("on /") + 3; i < line.find
+							(" (osxfuse"); ++i) {
+							device_path += line.at(i);
+						}
 					}
-				}
-				else {
-					for(unsigned i = line.find("on /") + 3; i < line.find
-						(" type"); ++i) {
-						device_path += line.at(i);
-					}	
-				}
-				dev_roots.emplace_back(device_path);
-				device_path = "";
-			} // todo: create DeviceRoot class
+					else {
+						for(unsigned i = line.find("on /") + 3; i < line.find
+							(" type"); ++i) {
+							device_path += line.at(i);
+						}	
+					}
+					dev_roots.emplace_back(device_path);
+					device_path = "";
+				} // todo: create DeviceRoot class
+			}
+		}
+		catch(std::out_of_range& e) {
+			std::cerr << "ERROR FINDING STORAGE DEVICES" << endl;
+		}
+		catch(exception& e) {
+			std::cerr << "Exception: " << e.what() << endl;
 		}
 		fileInput.close();
 	}
