@@ -1,6 +1,11 @@
 # mac system files
 .DS_Store
 
+# eclipse
+.cproject
+.project
+.settings/
+
 # binary folder
 /bin
 
