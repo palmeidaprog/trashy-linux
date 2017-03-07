@@ -69,11 +69,11 @@ namespace trashy { namespace output {
 					}			
 				}
 				else { // files to delete 
-					files_to_trash.emplace_back(s);
+					files_to_trash.push_back(s);
 				} 
 			}
 			else { // files to delete
-				files_to_trash.emplace_back(s);
+				files_to_trash.push_back(s);
 			}
 		}
 		for(string str : files_to_trash) {
