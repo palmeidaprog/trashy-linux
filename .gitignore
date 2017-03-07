@@ -1,3 +1,8 @@
+# eclipse files
+.cproject
+.project
+.settings/
+
 # mac system files
 .DS_Store
 
