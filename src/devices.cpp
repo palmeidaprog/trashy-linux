@@ -89,6 +89,7 @@ namespace trashy { namespace config {
 
 				while(getline(fileInput, line)) {
 					if(os == "Mac OSX") {
+						std::cout << "(hfs: " << line.find(" (hfs") << endl;
 						for(unsigned i = line.find("on /") + 3; i < line.find
 							(" (osxfuse"); ++i) {
 							device_path += line.at(i);
