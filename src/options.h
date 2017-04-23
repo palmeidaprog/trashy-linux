@@ -40,6 +40,7 @@ namespace trashy { namespace output {
 		const OutputMsg read_options(const string &str);
 		void move_to_trash(const string &to_delete);
 		const string get_trash_bin(const string &path_to_parse);
+		void print_trash_files();
 	};
 }}
 

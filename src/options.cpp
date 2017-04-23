@@ -129,5 +129,12 @@ namespace trashy { namespace output {
 					.c_str());
 		return "~/.Trash";
 	}
+
+	void Options::print_trash_files() { // TODO: consider deleting later (test)
+		std::cout << " Files to trash" << std::endl;
+		for(string s: files_to_trash) {
+			std::cout << s << std::endl;
+		}
+	}
 }}
 
