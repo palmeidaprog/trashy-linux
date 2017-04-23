@@ -21,6 +21,8 @@ using std::ifstream;
 using std::getline;
 using std::endl;
 using std::exception;
+using std::cout;
+using std::endl;
 
 namespace trashy { namespace config {
 
@@ -113,6 +115,15 @@ namespace trashy { namespace config {
 			std::cerr << "Exception: " << e.what() << endl;
 		}
 		fileInput.close();
+	}
+
+	void Devices::print_devices() { // TODO: improve appearance
+		unsigned i = 1;
+
+		cout << "Devices:" << endl;
+		for(string s: dev_roots) {
+			cout << i++ << ": " << s << endl; 
+		}
 	}
 
 	void Devices::create_trash() {

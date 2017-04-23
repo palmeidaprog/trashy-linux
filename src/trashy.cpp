@@ -43,6 +43,8 @@ int main(int argc, char *argv[]) {
 		output_msg(op.parse_args(args));
 	}
 
+	devices.print_devices();
+
 	return 0;
 }
 

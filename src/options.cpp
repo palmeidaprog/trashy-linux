@@ -9,6 +9,7 @@
 #include <vector>
 #include <string>
 #include <cstdlib>
+#include <iostream> // TOUNDO: test
 #include "output_msg.h"
 #include "options.h"
 
@@ -119,11 +120,13 @@ namespace trashy { namespace output {
 			cmd += "-v " + to_delete + " ";
 		}
 		cmd += get_trash_bin(to_delete);
+		std::cout << cmd << std::endl;
 		system(cmd.c_str());
 	}
 
 	const string Options::get_trash_bin(const string &path_to_parse) {
-		system(("pwd -P | cat >" + devices.get_home_dir() + PWD_FILE).c_str());
+		system(("pwd -P | cat >" + devices.get_home_dir() + PWD_FILE)
+					.c_str());
 		return "~/.Trash";
 	}
 }}

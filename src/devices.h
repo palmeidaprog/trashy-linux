@@ -33,6 +33,7 @@ namespace trashy { namespace config {
 
 		string get_home_dir();
 		string get_os_name();
+		void print_devices();
 
 	private:
 		void update_devices();
