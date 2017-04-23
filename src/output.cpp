@@ -70,7 +70,9 @@ namespace trashy { namespace output {
 	}
 
 	void invalid_args() {
-		cerr << "INVALID_OPTION" << endl;
+		cerr << "trashy: invalid option -- ''" << endl;
+		cerr << "Try 'trashy --help' or 'trashy -h' for more " <<
+				"information" << endl;
 	}
 
 	// prints program output
@@ -86,7 +88,7 @@ namespace trashy { namespace output {
 				about();
 				break;
 			case OutputMsg::SUCCESS:
-				cout << "Success!" << endl;
+				cout << "Success!" << endl; // TODO: change this
 				break;
 			case OutputMsg::INVALID_OPTION:
 				invalid_args();
