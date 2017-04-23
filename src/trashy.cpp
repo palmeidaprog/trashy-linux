@@ -21,7 +21,7 @@
 using std::string;
 using std::vector;
 using trashy::output::Options;
-using trashy::output::OutputMsg;
+using trashy::output::OumtputMsg;
 using trashy::output::output_msg; // function
 using trashy::config::Devices;
 
@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
 	if(argc <= 1) {
 		output_msg(OutputMsg::NO_ARGS);
 	}
-	else{ 
+	else{
 		output_msg(op.parse_args(args));
 	}
 

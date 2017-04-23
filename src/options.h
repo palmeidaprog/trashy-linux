@@ -19,20 +19,22 @@ using trashy::config::Devices;
 
 namespace trashy { namespace output {
 	class Options {
-		bool quiet, verbose;
+		bool quiet, verbose, confirmation;
 		vector<string> files_to_trash;
 		const string PWD_FILE = "/.trashy/pwd_file";
 		Devices devices;
 
 		public:
-			Options(Devices &dev): quiet(false), verbose(false),
-					devices(dev) {	} 
+			Options(Devices &dev): quiet(false), verbose(false), 
+					confirmation(false), devices(dev) {	} 
 
 		// setters and getters
 		const bool &is_quiet();
 		void set_quiet(const bool &q);
 		const bool &is_verbose();
 		void set_verbose(const bool &verb);
+		const bool &is_confirmation();
+		void set_confirmation(const bool &conf);
 
 		// parse arguments
 		const OutputMsg parse_args(const vector<string> &args);

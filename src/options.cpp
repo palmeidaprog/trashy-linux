@@ -41,6 +41,14 @@ namespace trashy { namespace output {
 		verbose = verb;
 	}
 
+	const bool &is_confirmation() {
+		return confirmation;
+	}
+
+	void set_confirmation(const bool &conf) {
+		confirmation = conf;
+	}
+
 	// parse arguments todo: finish
 	const OutputMsg Options::parse_args(const vector<string> &args) {
 		for(string s : args) {
@@ -86,7 +94,7 @@ namespace trashy { namespace output {
 	}
 
 	const OutputMsg Options::read_verbose_options(const string &str) {
-		return OutputMsg::INVALID_OPTION;
+		return OutputMsg::INVALID_OPTION; // TODO: implement this
 	}
 
 	const OutputMsg Options::read_options(const string &str) {
