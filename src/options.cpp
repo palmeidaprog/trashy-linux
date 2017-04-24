@@ -41,11 +41,11 @@ namespace trashy { namespace output {
 		verbose = verb;
 	}
 
-	const bool &is_confirmation() {
+	const bool &Options::is_confirmation() {
 		return confirmation;
 	}
 
-	void set_confirmation(const bool &conf) {
+	void Options::set_confirmation(const bool &conf) {
 		confirmation = conf;
 	}
 

@@ -36,7 +36,7 @@ namespace trashy { namespace output {
 				 << endl;
 		cout << "  -V,  --version               show Trashy version"
 				 << endl << endl;
-
+				 
 		// options
 		cout << "Options:" << endl;
 		cout << "  -q,  --quiet                 quiet (no output)" 
