@@ -90,16 +90,17 @@ namespace trashy { namespace config {
 				string line, device_path = "";
 
 				while(getline(fileInput, line)) {
-					if(os == "Mac OSX") {
-						std::cout << "(hfs: " << line.find(" (hfs") << endl;
-						for(unsigned i = line.find("on /") + 3; i < line.find
-							(" (osxfuse"); ++i) {
+					if(get_os_name() == "Mac OSX") {
+						auto lin_max = line.find(" (hfs");
+						for(unsigned i = line.find("on /") + 3; i < lin_max; 
+							++i) {
 							device_path += line.at(i);
 						}
 					}
 					else {
-						for(unsigned i = line.find("on /") + 3; i < line.find
-							(" type"); ++i) {
+						auto line_max = line.find(" type");
+						for(unsigned i = line.find("on /") + 3; i < line_max;
+							 ++i) {
 							device_path += line.at(i);
 						}	
 					}
