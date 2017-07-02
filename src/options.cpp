@@ -78,6 +78,7 @@ namespace trashy { namespace output {
 					}			
 				}
 				else { // files to delete 
+					search_for_options = false;
 					files_to_trash.push_back(s);
 				} 
 			}
@@ -125,9 +126,9 @@ namespace trashy { namespace output {
 	void Options::move_to_trash(const string &to_delete) {
 		string cmd = "mv ";
 		if(is_verbose()) {
-			cmd += "-v " + to_delete + " ";
+			cmd += "-v ";
 		}
-		cmd += get_trash_bin(to_delete);
+		cmd += to_delete + " " + get_trash_bin(to_delete);
 		std::cout << cmd << std::endl;
 		system(cmd.c_str());
 	}
