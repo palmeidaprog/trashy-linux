@@ -95,7 +95,23 @@ namespace trashy { namespace output {
 	}
 
 	const OutputMsg Options::read_verbose_options(const string &str) {
-		return OutputMsg::INVALID_OPTION; // TODO: implement this
+		switch(str) {
+			case "--verbose":
+				set_verbose(true);
+				break;
+			case "--quiet":
+				set_quiet(true);
+				break;
+			case "--version":
+				return OutputMsg::ABOUT;
+				break;
+			case "--help":
+				return OutputMsg::HELP;
+				break;
+			default:
+				return OutputMsg::INVALID_OPTION;
+				break;
+		}
 	}
 
 	const OutputMsg Options::read_options(const string &str) {
@@ -114,6 +130,8 @@ namespace trashy { namespace output {
 					case 'h':
 						return OutputMsg::HELP;
 						break;
+					case 'l':
+						
 					default:
 						return OutputMsg::INVALID_OPTION;
 						break;

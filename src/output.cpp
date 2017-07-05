@@ -90,6 +90,8 @@ namespace trashy { namespace output {
 			case OutputMsg::SUCCESS:
 				cout << "Success!" << endl; // TODO: change this
 				break;
+			case OutputMsg::DEVICES:
+				break;
 			case OutputMsg::INVALID_OPTION:
 				invalid_args();
 				break;
